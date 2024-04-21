@@ -15,8 +15,12 @@
 		$("statusInfo").style.lineHeight = deviceHeight * 0.1 + 'px' ;
 
 	//------提前下载和缓存APP需要的图片
-const booksPage = ['CS.jpg' , 'CSS.jpg' , 'CT.jpg' , 'GRE.jpg' , 'Git.jpg' , 'NinjaJS.jpg' , 'STEM.jpg' , 'UML.jpg' , 'bitCoin.jpg' , 'canvas.jpg' , 'cssAnimation.jpg' , 'gitForTeams.jpg' , 'internet.jpg' , 'javaScript.jpg' , 'learnCSS.jpg' , 'linuxCMD.jpg' , 'logic.jpg' , 'nutrition.jpg' , 'webProgramming.jpg' ] ;
-const teachersFace = ['0.jpg' , '1.jpg' , '10.jpg' , '11.jpg' , '12.jpg' , '13.jpg' , '2.jpg' , '3.jpg' , '4.jpg' , '5.jpg' , '6.jpg' , '7.jpg' , '8.jpg' , '9.jpg'  ] ;
+const booksPage = ["pinwheel.png","aprilshower.png","donquixote.png","notalone.png","tomorrow.png","circles.png","fallingflower.png","tomyyouth.png",
+	 ] ;
+const musicList = ['SEVENTEEN - 风车.mp3','SEVENTEEN - April shower.mp3', 
+'SEVENTEEN - DON QUIXOTE(1).mp3','SEVENTEEN - Not Alone.mp3', 'SEVENTEEN - 现在，即使明天是世界末日-.mp3','SEVENTEEN - Circles.mp3','SEVENTEEN - 落花.mp3','脸红的思春期 - 致我的思春期.mp3',
+]
+const teachersFace = ['0.jpg' , '1.jpg' , '2.jpg' , '3.jpg' , '4.jpg' , '5.jpg' , '6.jpg' , '7.jpg'  ] ;
 
  
 
@@ -24,7 +28,8 @@ const teachersFace = ['0.jpg' , '1.jpg' , '10.jpg' , '11.jpg' , '12.jpg' , '13.j
   $('bookPage').style.width = deviceWidth + 'px' ;
   
   setTimeout( ()=>$('teacherFace').src = 'myface/0.jpg' ,3000);
-  setTimeout( ()=>$('bookPage').src = 'lesson/CS.jpg' ,4000);
+  setTimeout( ()=>$('bookPage').src = 'music/pinwheel.png' ,4000);
+  setTimeout( ()=>$('myAudio').src = 'mp3/SEVENTEEN - 风车.mp3' ,4000);
   setTimeout(loadImgOneByOne,5000);
   
  //测试封面图片在本地和在github上的巨大区别，分析异步代码的执行流程图
@@ -33,7 +38,7 @@ const teachersFace = ['0.jpg' , '1.jpg' , '10.jpg' , '11.jpg' , '12.jpg' , '13.j
     loadImgOneByOne.imgIndex = 0 ;
  function loadImgOneByOne(){
 	let img = new Image();
-	img.src = 'lesson/' + booksPage[loadImgOneByOne.imgIndex] ;
+	img.src = 'music/' + booksPage[loadImgOneByOne.imgIndex] ;
 	if (loadImgOneByOne.imgIndex < booksPage.length - 1){
        loadImgOneByOne.imgIndex ++ ;
        img.addEventListener('load', 
@@ -130,7 +135,7 @@ var clock = setInterval(()=>{
 	 } //function  handleMove
 
   //----建立模型响应和处理touch事件产生的数据
- const chapters = ['第1章 Introduction','第2章 Number Systems','第3章 Data Storage','第4章 Computer Organization','第5章 Computer Networks and Internet','第6章 Operating Systems','第7章  Software Engineering','第8章  OOP Programming'] ;
+ const chapters = ['《风车（Pinwheel）》','《April Shower》','《堂吉诃德》','《Not Alone》','《现在，即使明天是世界末日》','《Circles》','《落花Falling Flower》','《致我的思春期》'] ;
  const books = booksPage ;
  var touchModel = {
    target: null ,
@@ -144,6 +149,7 @@ var clock = setInterval(()=>{
    },
    chapterNo : 0 ,
    bookNo : 0 ,
+   audioNo : 0 ,
    respondTouch : function(){
     this.deltaX = this.ongoingXY[this.ongoingXY.length-1].x - this.ongoingXY[0].x ;
 	this.deltaY = this.ongoingXY[this.ongoingXY.length-1].y - this.ongoingXY[0].y ;
@@ -154,16 +160,24 @@ var clock = setInterval(()=>{
         if (this.target == $('chapter') ){ //touch target is chapters
 		
     		if (this.deltaX > 0){
-              this.nextChapter();
+				this.nextBook();
+				this.nextChapter();
+				this.nextMusic();
 		    }else{
-		      this.preChapter() ;
+				this.preBook() ;
+				this.preChapter();
+				this.preMusic();
 		    }
 		 }
 		if (this.target == $('bookPage') ){ //touch target is books
 		    if (this.deltaX > 0){
               this.nextBook();
+			  this.nextChapter();
+			  this.nextMusic();
 		    }else{
 		      this.preBook() ;
+			  this.preChapter();
+			  this.preMusic();
 		    }
 		}
     }
@@ -176,6 +190,7 @@ var clock = setInterval(()=>{
 	     this.chapterNo -- ;
 	 }
 	 $("chapter").textContent = chapters[this.chapterNo];
+	
    },
    nextChapter :function (){
       if (this.chapterNo === chapters.length -1)  {
@@ -184,6 +199,7 @@ var clock = setInterval(()=>{
 	     this.chapterNo ++ ;
 	 }
 	 $("chapter").textContent = chapters[this.chapterNo];
+
    },
    preBook : function(){
       books
@@ -192,7 +208,7 @@ var clock = setInterval(()=>{
      }else{
 	     this.bookNo -- ;
 	 }
-	 $("bookPage").src = 'lesson/' + books[this.bookNo];
+	 $("bookPage").src = 'music/' + books[this.bookNo];
    },
    nextBook :function (){
       if (this.bookNo === books.length -1)  {
@@ -200,8 +216,28 @@ var clock = setInterval(()=>{
      }else{
 	     this.bookNo ++ ;
 	 }
-	  $("bookPage").src = 'lesson/' + books[this.bookNo];
+	  $("bookPage").src = 'music/' + books[this.bookNo];
+	  
    },
+   preMusic : function(){
+	musicList
+	if (this.audioNo ===0)  {
+		this.audioNo = musicList.length -1 ;
+	}else{
+		this.audioNo -- ;
+	}
+	$("myAudio").src = 'mp3/' + musicList[this.audioNo];
+	$("myAudio").play();
+	},
+	nextMusic :function (){
+		if (this.audioNo === musicList.length -1)  {
+		   this.audioNo = 0 ;
+	   }else{
+		   this.audioNo ++ ;
+	   }
+		$("myAudio").src = 'mp3/' + musicList[this.audioNo];
+		$("myAudio").play();
+	 },
  } ; //touchModel定义完毕
 
 

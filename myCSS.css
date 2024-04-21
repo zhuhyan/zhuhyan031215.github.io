@@ -7,8 +7,8 @@ main>img#bookPage{
 }
 header{
  height: 15% ;
- background: rgb(250,100,0);
- color: rgb(250,250,0);
+ background:aliceblue;
+ color:black;
 }
 nav {
  height: 10% ;
@@ -17,11 +17,12 @@ footer{
  height: 10% ;
  background: rgb(30,20,10);
  color: white;
+ text-align: center;
 }
 main{
  height: 65% ;
  position:relative;
- /*ÔÚÄ³Ð©Éè±¸ÖÐ£¬mainÈÝÆ÷ÄÚµÄbookPage²åÍ¼¿ÉÄÜ¸ß¶È¿ÉÄÜ³¬³öÉè¶¨·¶Î§£¬¶Ô³¬³öµÄ²¿·ÖÒþ²Ø´¦Àí£¡*/
+ /*ï¿½ï¿½Ä³Ð©ï¿½è±¸ï¿½Ð£ï¿½mainï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½bookPageï¿½ï¿½Í¼ï¿½ï¿½ï¿½Ü¸ß¶È¿ï¿½ï¿½Ü³ï¿½ï¿½ï¿½ï¿½è¶¨ï¿½ï¿½Î§ï¿½ï¿½ï¿½Ô³ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½ï¿½ï¿½*/
   overflow: hidden ; 
 }
 
@@ -32,12 +33,19 @@ header>p#lessonName{
   text-align:center;
    
 }
+main>audio#myAudio{
+  top: 0%;
+  height: 10%;
+  position: absolute;
+  width: 100%;
+  background-color: aliceblue;
+}
 main>img#teacherFace{
-  position:absolute;
-  top:4% ;
-  right: 3% ;
-  width:33%; 
- 
+  position: absolute;
+  top: 10%;
+  right: 0%;
+  width: 30%;
+  height: 25%;
  }
 
 main>p#teaching{
@@ -53,11 +61,11 @@ footer>p#statusInfo{
   text-align:center;
  }
 nav>p#chapter{
- color: white ;
+ color:black ;
  font-size: 1.2em;
  
  text-align:center;
- background-color: brown ;
+ background-color:aliceblue ;
 }
 
 div#progressBar{
@@ -66,8 +74,8 @@ div#progressBar{
  position: absolute ;
  z-index: 5 ;
  left:0;
- bottom:20%;
- background-color:brown;
+ bottom:37%;
+ text-align: center;
  color:white;
  padding:0.5em;
  line-height:3em;
