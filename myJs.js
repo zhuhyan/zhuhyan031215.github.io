@@ -15,7 +15,7 @@
 		$("statusInfo").style.lineHeight = deviceHeight * 0.1 + 'px' ;
 
 	//------提前下载和缓存APP需要的图片
-const booksPage = ["pinwheel.png","aprilshower.png","donquixote.png","notalone.png","tomorrow.png","circles.png","fallingflower.png","tomyyouth.png",
+const booksPage = ["pinwheel.jpg","aprilshower.jpg","donquixote.jpg","notalone.jpg","tomorrow.jpg","circles.jpg","fallingflower.jpg","tomyyouth.jpg",
 	 ] ;
 const musicList = ['SEVENTEEN - 风车.mp3','SEVENTEEN - April shower.mp3', 
 'SEVENTEEN - DON QUIXOTE(1).mp3','SEVENTEEN - Not Alone.mp3', 'SEVENTEEN - 现在，即使明天是世界末日-.mp3','SEVENTEEN - Circles.mp3','SEVENTEEN - 落花.mp3','脸红的思春期 - 致我的思春期.mp3',
@@ -28,7 +28,7 @@ const teachersFace = ['0.jpg' , '1.jpg' , '2.jpg' , '3.jpg' , '4.jpg' , '5.jpg' 
   $('bookPage').style.width = deviceWidth + 'px' ;
   
   setTimeout( ()=>$('teacherFace').src = 'myface/0.jpg' ,3000);
-  setTimeout( ()=>$('bookPage').src = 'music/pinwheel.png' ,4000);
+  setTimeout( ()=>$('bookPage').src = 'music/pinwheel.jpg' ,4000);
   setTimeout( ()=>$('myAudio').src = 'mp3/SEVENTEEN - 风车.mp3' ,4000);
   setTimeout(loadImgOneByOne,5000);
   
